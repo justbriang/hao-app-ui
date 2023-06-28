@@ -1,0 +1,31 @@
+class AppRoutes {
+  static String home = '/';
+  static String splashScreenPath = '/splash';
+  static String onboardingPath = '/onboarding';
+  static String ag = '/ag';
+  static String agCreate = '/agCreate';
+  static String agReview = '/agReview';
+  static String agGoal = '/agGoal';
+  static String mining = '/mining';
+  static String miningCreate = '/miningCreate';
+  static String miningReview = '/miningReview';
+  static String miningGoals = '/miningGoals';
+  static String scale = '/scale';
+  static String scaleReview = '/scaleReview';
+  static String scaleGoals = '/scaleGoals';
+  static String kinetics = '/kinetics';
+  static String kineticsReview = '/kineticsReview';
+  static String kineticsGoals = '/kineticsGoals';
+  static String treasures = '/treasures';
+  static String treasuresReview = '/treasuresReview';
+  static String treasuresGoals = '/treasuresGoals';
+  static String sendOff = '/sendOff';
+  static String sendOffExample = '/sendOffExample';
+  static String sendOffCreate = '/sendOffCreate';
+  static String sendOffReview = '/sendOffReview';
+  static String sendOffView = '/sendOffView';
+  static String loginPath = '/login';
+  static String forgotPass = '/forgotPass';
+  static String signupPath = '/signupPath';
+  static String profilePath = '/profilePath';
+}
