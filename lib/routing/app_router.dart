@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hao_app/home_screen.dart';
+import 'package:hao_app/property_details_screen.dart';
 
 import '../onboarding/onboarding_screen.dart';
 import '../splash_screen.dart';
@@ -45,7 +46,9 @@ class AppRouter extends RouterDelegate
         if (!appStateManager.isInitialized) SplashScreen.page(),
         if (appStateManager.isInitialized &&
             !appStateManager.isOnboardingComplete)
-          HomeScreen.page(),
+          OnboardingScreen.page(),
+        if (appStateManager.isOnboardingComplete) HomeScreen.page(),
+        if (appStateManager.goToPropertyDetailsScreen) PropertyDetailsScreen.page(),
       ],
     );
   }
@@ -54,8 +57,8 @@ class AppRouter extends RouterDelegate
     if (!route.didPop(result)) {
       return false;
     }
-    if (route.settings.name == AppRoutes.ag) {
-      appStateManager.setGoToAGPage = false;
+    if (route.settings.name == AppRoutes.propertyDetails) {
+      appStateManager.setGoToPropertyDetailsScreen = false;
     }
 
     return true;

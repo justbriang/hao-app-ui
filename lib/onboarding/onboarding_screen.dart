@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hao_app/routing/app_state_manager.dart';
 import 'package:hao_app/widgets/gradient_button.dart';
+import 'package:provider/provider.dart';
 
 import '../routing/app_routes.dart';
 
@@ -78,9 +80,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const GradientButton(
-                    title: "Get Started",
-                    height: 50,
+                  GestureDetector(
+                    onTap: () {
+                      Provider.of<AppStateManager>(context, listen: false)
+                          .setOnBoardingStatus = true;
+                    },
+                    child: const GradientButton(
+                      title: "Get Started",
+                      height: 50,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

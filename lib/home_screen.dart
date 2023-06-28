@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hao_app/routing/app_routes.dart';
+import 'package:hao_app/routing/app_state_manager.dart';
 import 'package:hao_app/widgets/gradient_button.dart';
 import 'package:hao_app/widgets/horizontal_property_card.dart';
 import 'package:hao_app/widgets/white_button.dart';
 import 'package:hao_app/widgets/property_card.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(
                               height: 10,
@@ -61,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 5,
                             ),
                             const Text(
-                              "Medical Director",
+                              "Tenant",
                               // style: TextStyle(color: Colors.black),
                             ),
                             const SizedBox(
@@ -76,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           imageUrl:
                               "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
                           imageBuilder: (context, imageProvider) => Container(
-                            height: 50,
-                            width: 50,
+                            height: 45,
+                            width: 45,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -179,9 +181,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextButton(
                             child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.grey.shade700,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(4.0)),
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius:
+                                     const BorderRadius.all(Radius.circular(8.0)),
                                 ),
                                 padding: const EdgeInsets.all(10),
                                 child: const Text("See All")),
@@ -198,9 +200,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         scrollDirection: Axis.horizontal,
                         itemCount: filterButtons.length,
                         itemBuilder: (context, index) {
-                          return PropertyCard(
-                            height: size.width * .6,
-                            width: size.width * .6,
+                          return GestureDetector(
+                            onTap: () {
+                              Provider.of<AppStateManager>(context,
+                                      listen: false)
+                                  .setGoToPropertyDetailsScreen = true;
+                            },
+                            child: PropertyCard(
+                              height: size.width * .6,
+                              width: size.width * .6,
+                            ),
                           );
                         },
                       ),
@@ -217,10 +226,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SliverList(
-                  delegate:
-                      SliverChildBuilderDelegate((context, index) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const HorizontalPropertyCard(),
+                  delegate: SliverChildBuilderDelegate(
+                      (context, index) => const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: HorizontalPropertyCard(),
                           )))
             ],
           ),
