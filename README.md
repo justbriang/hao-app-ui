@@ -40,12 +40,12 @@ To use this repository, you will need the following installed on your machine:
 Once you have the prerequisites installed, you can clone this repository:
 
 ``` 
-git clone https://github.com/yourusername/real-estate-app-ui-flutter.git 
+git clone https://github.com/justbriang/hao-app-ui
 ```
 
 Next,  open the project in your code editor of choice:
 ```
-cd real-estate-app-ui-flutter 
+cd hao-app-ui
 ```
 
 ### Usage
